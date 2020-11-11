@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.tranphunguyen.mymall.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="com.tranphunguyen.mymall.MyOrderFragment"
+        android:label="My Order"
+        tools:layout="@layout/fragment_my_order" />
+
+    <fragment
+        android:id="@+id/nav_reward"
+        android:name="com.tranphunguyen.mymall.RewardFragment"
+        android:label="Reward"
+        tools:layout="@layout/fragment_reward" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.tranphunguyen.mymall.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/nav_wishlist"
+        android:name="com.tranphunguyen.mymall.WishlistFragment"
+        android:label="Wishlist"
+        tools:layout="@layout/fragment_wishlist"/>
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.tranphunguyen.mymall.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+</navigation>
