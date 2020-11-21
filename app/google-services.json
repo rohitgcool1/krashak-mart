@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "701279293111",
+    "firebase_url": "https://krashakmart.firebaseio.com",
+    "project_id": "krashakmart",
+    "storage_bucket": "krashakmart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701279293111:android:e865a4953ad185ba568732",
+        "android_client_info": {
+          "package_name": "com.minorproject.krashakmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701279293111-d8bvbvtucpa5ebe38g236v6ipevhsef0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minorproject.krashakmart",
+            "certificate_hash": "1a0ffa1e3881176b623c5b69d3fe88c679bc8178"
+          }
+        },
+        {
+          "client_id": "701279293111-aocfvtln79di1p2esjo05jlpshe0649s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5nqPKhSSh_28sGdFJPYBwuthteDLxR-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701279293111-aocfvtln79di1p2esjo05jlpshe0649s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
