@@ -3,9 +3,12 @@ package com.minorproject.krashakmart;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.minorproject.krashakmart.adapter.AgriEquipment_Adapter;
@@ -30,18 +33,29 @@ public class Agri_Equipment extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gvAgriEquipment=findViewById(R.id.agri_equipment_gridview);
-        int layout_code=getIntent().getIntExtra("layout_code",-1);
 
-        if(layout_code==1) {
             List<AgriEquipment_Model> agriEquipment_modelList = new ArrayList<>();
-            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.waterpump_icon, "WATER PUMP"));
-            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.submersebil_icon, "SUBMERSEBIL"));
-            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.spraymachine_icon, "SPRAY PUMP/MACHINE"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.iocn_waterpump, "WATER PUMP"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_submersebilpump, "SUBMERSEBIL PUMP"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_spraypump, "SPRAY PUMP/MACHINE"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_sprinkler, "SPRINKLER"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_spraypipe, "SPRAY PIPE"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_alternator, "ALTERNATOR"));
+            agriEquipment_modelList.add(new AgriEquipment_Model(R.drawable.icon_more, "MORE"));
 
             AgriEquipment_Adapter agriEquipment_adapter = new AgriEquipment_Adapter(agriEquipment_modelList);
             gvAgriEquipment.setAdapter(agriEquipment_adapter);
 
-        }
+        gvAgriEquipment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent productDetailsIntent = new Intent(Agri_Equipment.this,ViewAll_EquipmentActivity.class);
+                startActivity(productDetailsIntent);
+            }
+        });
+
+
+
     }
 
     @Override

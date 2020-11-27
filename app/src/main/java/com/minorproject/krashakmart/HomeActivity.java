@@ -1,5 +1,6 @@
 package com.minorproject.krashakmart;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -42,23 +43,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-         actionbarlogo=findViewById(R.id.action_bar_logo);
+        actionbarlogo = findViewById(R.id.action_bar_logo);
         setSupportActionBar(toolbar);
 
         FirebaseAuth.getInstance().signOut();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-         drawer.addDrawerListener(toggle);
-         toggle.syncState();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
 
-        framelayout=findViewById(R.id.content_home);
-        setFragment(new HomeFragment(),HOME_FRAGMENT);
+        framelayout = findViewById(R.id.content_home);
+        setFragment(new HomeFragment(), HOME_FRAGMENT);
 
     }
 

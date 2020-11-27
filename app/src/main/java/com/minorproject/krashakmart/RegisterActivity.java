@@ -163,13 +163,13 @@ public class RegisterActivity extends AppCompatActivity implements
 
         firebaseAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
+                            if (task.isSuccessful()) {
 
-                        resetFragment.onSentEmailSuccessful();
+                                resetFragment.onSentEmailSuccessful();
 
-                    }
+                            }
 
-                }
+                        }
                 );
 
     }
@@ -211,7 +211,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
     }
 
-        @Override
+    @Override
     public void onBackPressed() {
         SignInFragment signInFragment = (SignInFragment) fragmentManager.findFragmentByTag(Constant.TAG_SIGN_IN_FRAG);
         if(signInFragment != null && signInFragment.isVisible()) {

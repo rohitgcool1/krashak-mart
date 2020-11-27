@@ -3,9 +3,12 @@ package com.minorproject.krashakmart;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.minorproject.krashakmart.adapter.Agri_machineAdapter;
@@ -31,17 +34,25 @@ public class Agri_Machine extends AppCompatActivity {
 
         gvAgriMachines=findViewById(R.id.agri_machine_gridview);
 
-        int layout_code=getIntent().getIntExtra("layout_code",-1);
-
-        if(layout_code==0) {
             List<Agri_machineModel> agri_machineModelList = new ArrayList<>();
-            agri_machineModelList.add(new Agri_machineModel(R.drawable.tractor1, "TRACTOR"));
-            agri_machineModelList.add(new Agri_machineModel(R.drawable.harvester1, "HARVESTER"));
-            agri_machineModelList.add(new Agri_machineModel(R.drawable.trolly1, "TROLLY"));
+            agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_tractor, "TRACTOR"));
+            agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_harvester, "HARVESTER"));
+            agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_trolley, "TROLLY"));
+        agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_seeddrill, "SEED DRILL"));
+        agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_cultivator, "CULTIVATOR"));
+        agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_rotavator, "ROTARVATOR"));
+        agri_machineModelList.add(new Agri_machineModel(R.drawable.icon_more, "MORE"));
 
             Agri_machineAdapter agri_machineAdapter = new Agri_machineAdapter(agri_machineModelList);
             gvAgriMachines.setAdapter(agri_machineAdapter);
-        }
+
+            gvAgriMachines.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent productDetailsIntent = new Intent(Agri_Machine.this,ViewAll_AgriMachinesActivity.class);
+                    startActivity(productDetailsIntent);
+                }
+            });
     }
 
     @Override

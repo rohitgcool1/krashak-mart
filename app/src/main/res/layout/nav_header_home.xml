@@ -16,14 +16,12 @@
         android:id="@+id/main_profile_image"
         android:layout_width="68dp"
         android:layout_height="68dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="8dp"
         android:layout_marginBottom="8dp"
         android:elevation="3dp"
-        android:tint="@color/white"
+        android:paddingTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/main_fullname"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@drawable/icon_pofile_add" />
+        tools:srcCompat="@drawable/profile_placeholder" />
 
     <TextView
         android:id="@+id/main_fullname"

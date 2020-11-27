@@ -28,7 +28,7 @@ public class Agri_machineAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return agri_machineModelList.size();
+        return 7;
     }
 
     @Override
@@ -45,22 +45,16 @@ public class Agri_machineAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
         if (convertView == null) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_agri__machine, null);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent productDetailsIntent = new Intent(parent.getContext(), ViewAll_AgriMachinesActivity.class);
-                    parent.getContext().startActivity(productDetailsIntent);
-                }
-            });
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.machine_category, null);
 
             ImageView machineImg=view.findViewById(R.id.machine_image);
             TextView machineName=view.findViewById(R.id.machine_name);
-            machineImg.setImageResource(agri_machineModelList.get(position).getIcon());
-            machineName.setText(agri_machineModelList.get(position).getName());
+            try{
 
-
+            }catch(NullPointerException e) {
+                machineImg.setImageResource(agri_machineModelList.get(position).getIcon());
+                machineName.setText(agri_machineModelList.get(position).getName());
+            }
 
         }
         else{

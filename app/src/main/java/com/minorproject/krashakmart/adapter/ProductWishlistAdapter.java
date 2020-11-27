@@ -71,12 +71,17 @@ private List<WishlistModel> wishlistModelList;
         }
 
         private void setData(int res,String producttitle,String productprice,String pymntAvlb,int totalratingNo,String avgRate){
-            productimage.setImageResource(res);
-            productTitle.setText(producttitle);
-            productPrice.setText(productprice);
-            paymntAvaliable.setText(pymntAvlb);
-            totalRatings.setText(totalratingNo +"ratings");
-            rating.setText(avgRate);
+           try {
+
+           }
+           catch (NullPointerException e) {
+               productimage.setImageResource(res);
+               productTitle.setText(producttitle);
+               productPrice.setText(productprice);
+               paymntAvaliable.setText(pymntAvlb);
+               totalRatings.setText(totalratingNo + "ratings");
+               rating.setText(avgRate);
+           }
             deletebtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -24,7 +24,7 @@ public class AgriEquipment_Adapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return agriEquipment_modelList.size();
+        return 7;
     }
 
     @Override
@@ -42,21 +42,18 @@ public class AgriEquipment_Adapter extends BaseAdapter {
 
         View view;
         if (convertView == null) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_agri__equipment, null);
-            view.setElevation(0);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent productDetailsIntent = new Intent(parent.getContext(), ViewAll_EquipmentActivity.class);
-                    parent.getContext().startActivity(productDetailsIntent);
-                }
-            });
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.machine_category, null);
 
             ImageView equipmentImg=view.findViewById(R.id.machine_image);
             TextView equipmentName=view.findViewById(R.id.machine_name);
-            equipmentImg.setImageResource(agriEquipment_modelList.get(position).getIcon());
-            equipmentName.setText(agriEquipment_modelList.get(position).getName());
+            try
+            {
+
+            }
+            catch(NullPointerException e) {
+                equipmentImg.setImageResource(agriEquipment_modelList.get(position).getIcon());
+                equipmentName.setText(agriEquipment_modelList.get(position).getName());
+            }
 
         }
         else{

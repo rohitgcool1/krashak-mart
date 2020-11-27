@@ -4,11 +4,9 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.minorproject.krashakmart.Utils.Constant;
 
 
@@ -33,20 +30,22 @@ import com.minorproject.krashakmart.Utils.Constant;
  * Use the {@link SignUpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignUpFragment extends Fragment {
+public class SignUpFragment extends Fragment
+{
 
     private TextView alreadyHaveAnAccount;
     private EditText edtEmail, edtFullName, edtPassword, edtComfirmPassword;
     private Button btnSignUp;
     private ProgressBar prgSignUp;
     private ImageButton btnClose;
-
     private Drawable iconError;
-
     private OnFragmentInteractionListener mListener;
 
-    public SignUpFragment() {
-        // Required empty public constructor
+
+
+    public SignUpFragment()
+    {
+     // Required empty public constructor
     }
 
     /**
@@ -93,20 +92,23 @@ public class SignUpFragment extends Fragment {
         onTextChangeEdtPassword();
         onTextChangeEdtComfirmPassword();
 
+
         btnSignUp.setOnClickListener(v -> mListener.onSignUp(
                 edtEmail.getText().toString(),
                 edtPassword.getText().toString(),
                 edtFullName.getText().toString()
+
         ));
 
         btnClose.setOnClickListener(v -> mListener.onClose());
+
     }
 
-//    public void onButtonPressed(Uri uri) {
-////        if (mListener != null) {
-////            mListener.onClickAlreadyHaveAccount();
-////        }
-//    }
+//    public void onButtonPressed(Uri uri)
+//   {
+//        if (mListener != null) {
+//            mListener.onClickAlreadyHaveAccount();/        }
+ //  }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -155,7 +157,8 @@ public class SignUpFragment extends Fragment {
         void onClose();
     }
 
-    private void findView(View view) {
+    private void findView(View view)
+    {
 
         alreadyHaveAnAccount = view.findViewById(R.id.tv_already_have_an_account);
         edtEmail = view.findViewById(R.id.edt_email);
@@ -198,7 +201,8 @@ public class SignUpFragment extends Fragment {
     private void enableButtonSignUp() {
 
         btnSignUp.setEnabled(true);
-        btnSignUp.setTextColor(getResources().getColor(R.color.colorAccent));
+        btnSignUp.setTextColor(getResources().getColor(R.color.green));
+        btnSignUp.setBackgroundColor(getResources().getColor(R.color.white));
 
     }
 

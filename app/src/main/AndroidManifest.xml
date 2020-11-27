@@ -15,14 +15,7 @@
         <activity android:name="com.minorproject.krashakmart.ViewAll_EquipmentActivity"></activity>
         <activity android:name="com.minorproject.krashakmart.Agri_Equipment" />
         <activity android:name="com.minorproject.krashakmart.ViewAll_AgriMachinesActivity" />
-        <activity
-            android:name=".Main_Home_Activity"
-            android:label="@string/title_activity_main__home_"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name="com.minorproject.krashakmart.Agri_Machine" />
         <activity android:name="com.minorproject.krashakmart.MyAddressesActivity" />
         <activity
@@ -48,6 +41,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.minorproject.krashakmart.News_FeedFragment"/>
+        <activity android:name="com.minorproject.krashakmart.Detailed"/>
+        <activity android:name=".WeatherFragment" />
+        <activity android:name=".AddCategoryActivity"/>
+        <activity android:name=".AddNewProductActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

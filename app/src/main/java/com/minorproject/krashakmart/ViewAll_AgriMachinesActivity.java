@@ -25,7 +25,7 @@ public class ViewAll_AgriMachinesActivity extends AppCompatActivity {
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Tractor");
+        getSupportActionBar().setTitle("AGRI MACHINES");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gridView=findViewById(R.id.gridview_agri_machines_vl);
@@ -33,7 +33,6 @@ public class ViewAll_AgriMachinesActivity extends AppCompatActivity {
         List<ProductModel> productModels=new ArrayList<>();
         productModels.add(new ProductModel(R.drawable.harvester1,"Swaraj Harvester","8100 Combine 105hp",5000));
         productModels.add(new ProductModel(R.drawable.tractor1,"Mahindra","Arjun 500D",800));
-
 
         GridProductLayoutAdapter gridProductLayoutAdapter=new GridProductLayoutAdapter(productModels);
         gridView.setAdapter(gridProductLayoutAdapter);

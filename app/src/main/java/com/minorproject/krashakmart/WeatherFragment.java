@@ -2,6 +2,7 @@ package com.minorproject.krashakmart;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,55 +12,116 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WeatherFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WeatherFragment extends Fragment {
+import androidx.appcompat.app.AppCompatActivity;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    public WeatherFragment() {
-        // Required empty public constructor
-    }
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Locale;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WeatherFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WeatherFragment newInstance(String param1, String param2) {
-        WeatherFragment fragment = new WeatherFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class WeatherFragment extends AppCompatActivity {
+    TextView cityName;
+    Button searchButton;
+    TextView result;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    class Weather extends AsyncTask<String,Void,String>{
+
+        @Override
+        protected String doInBackground(String... address) {
+            try {
+                URL url = new URL(address[0]);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream is = connection.getInputStream();
+                InputStreamReader isr = new InputStreamReader(is);
+                int data = isr.read();
+                String content = "";
+                char ch;
+                while (data !=-1){
+                    ch = (char) data;
+                    content = content + ch;
+                    data = isr.read();
+
+                }
+                return content;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
+    public void search(View view){
+        cityName = findViewById(R.id.cityName);
+        searchButton = findViewById(R.id.searchButton);
+        result = findViewById(R.id.result);
+
+        String cName = cityName.getText().toString();
+
+        String content;
+        Weather weather = new Weather();
+        try {
+            content = weather.execute("https://api.openweathermap.org/data/2.5/weather?q="+cName+"&appid=7cf6f98d6c94afcdfe16690273224ed1").get();
+            Log.i( "content", content);
+            JSONObject jsonObject = new JSONObject(content);
+            String weatherData = jsonObject.getString( "weather");
+            String mainTemperature = jsonObject.getString("main");
+            //
+            double temperature;
+            double visibility;
+            // Log.i("weatherData",weatherData);
+            JSONArray array= new JSONArray(weatherData);
+            String main= "";
+            String description= "";
+            //String temperature= "";
+            for( int i = 0; i<array.length(); i++){
+                JSONObject weatherPart = array.getJSONObject(i);
+                main = weatherPart.getString("main");
+                description = weatherPart.getString("description");
+            }
+            JSONObject mainPart = new JSONObject(mainTemperature);
+            //temperature = mainPart.getString("temp");
+            temperature = Double.parseDouble(mainPart.getString("temp"));
+            visibility = Double.parseDouble(jsonObject.getString("visibility"));
+            int visibilityinKilometer = (int) visibility/1000 ;
+            int tempinCelcius = (int) temperature-273;
+            //Log.i("Temperature",temperature);
+            /*Log.i("main",main);
+            Log.i("description",description);*/
+            String resultText = "Main :          "+main+
+                    "\nDescription : "+description +
+                    "\nTemperature : "+tempinCelcius +" C"+
+                    "\nVisibility :  "+visibilityinKilometer+" Km";
+            result.setText(resultText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_weather);
+
+
     }
+
 }

@@ -98,7 +98,6 @@ public class HomePageAdapter extends RecyclerView.Adapter {
 
         }
 
-
         public void setHorizontaLProductLayout(List<ProductModel> productModelList, String title) {
             horilayouttitle.setText(title);
             if(productModelList.size()>8)
@@ -108,7 +107,6 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                     @Override
                     public void onClick(View v) {
                         Intent  machineIntent= new Intent(itemView.getContext(), Agri_Machine.class);
-                        machineIntent.putExtra("layout_code",0);
                         itemView.getContext().startActivity(machineIntent);
                     }
                 });
@@ -146,12 +144,10 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent equipmentIntent= new Intent(itemView.getContext(),Agri_Equipment.class);
-                    equipmentIntent.putExtra("layout_code",1);
                     itemView.getContext().startActivity(equipmentIntent);
                 }
             });
         }
-
     }
 
 }

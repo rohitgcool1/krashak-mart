@@ -10,6 +10,5 @@
     tools:context=".HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
-<include layout="@layout/main_page_home"/>
 
 </FrameLayout>

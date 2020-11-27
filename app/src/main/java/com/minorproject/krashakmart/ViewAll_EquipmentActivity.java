@@ -25,7 +25,7 @@ public class ViewAll_EquipmentActivity extends AppCompatActivity {
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Water Pump");
+        getSupportActionBar().setTitle("AGRI EQUIPMENTS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gridView=findViewById(R.id.gridview_agri_equipment_vl);
